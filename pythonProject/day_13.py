@@ -12,9 +12,9 @@ def get_data():
     for i in separate_games:
         lines = i.split("\n")
 
-        a = re.findall(r"X\+([0-9]+)|Y\+([0-9]+)", lines[0])    # get the x/y values from a game
-        b = re.findall(r"X\+([0-9]+)|Y\+([0-9]+)", lines[1])
-        p = re.findall(r"X=([0-9]+)|Y=([0-9]+)", lines[2])
+        a = re.findall(r"X\+([0-9]+)|Y\+([0-9]+)", lines[0].strip())    # get the x/y values from a game
+        b = re.findall(r"X\+([0-9]+)|Y\+([0-9]+)", lines[1].strip())
+        p = re.findall(r"X=([0-9]+)|Y=([0-9]+)", lines[2].strip())
 
         a = (int(a[0][0]), int(a[1][1]))        # turn the regex find into usable data
         b = (int(b[0][0]), int(b[1][1]))
@@ -31,8 +31,8 @@ def find_least_tokens(gm:list[tuple[int,int]]):
     b = gm[1]
     p = gm[2]
 
-    numerator_x = p[0] // b[0] + 1
-    numerator_y = p[1] // b[1] + 1
+    numerator_x = p[0] // b[0]
+    numerator_y = p[1] // b[1]
 
     numerator_b = min(numerator_x, numerator_y)
 
