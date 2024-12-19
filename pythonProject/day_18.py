@@ -51,12 +51,11 @@ def is_way():
 
     upper = len(data)
     lower = 0
-
     remodeled = data.copy()
 
     while remodeled:
-        middle = lower + (upper - lower) // 2
 
+        middle = lower + (upper - lower) // 2
         if not lower < middle < upper:
             return lower + 1
 
